@@ -1,4 +1,3 @@
-import React from "react";
 import headerLogo from "../assets/images/header-logo.svg";
 import ListProductsCheckout from "../components/ListProductsCheckout";
 import { useNavigate } from "react-router-dom";

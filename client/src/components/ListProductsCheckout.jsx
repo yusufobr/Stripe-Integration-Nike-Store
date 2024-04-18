@@ -1,4 +1,3 @@
-import React from "react";
 import { products } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../redux/cart/cartSlice";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const SignInSignUpModal = ({ isOpen, onClose, onSignIn }) => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -31,11 +31,11 @@ const SignInSignUpModal = ({ isOpen, onClose, onSignIn }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center ${
+      className={`h-screen fixed inset-0 z-50 flex items-center justify-center ${
         isOpen ? "" : "hidden"
       }`}
     >
-      <div className="modal-overlay fixed inset-0 bg-gray-600 opacity-75"></div>
+      <div className="modal-overlay fixed inset-0 bg-gray-600 opacity-90 h-screen"></div>
       <div className="modal-content bg-white w-96 p-8 rounded-lg shadow-lg relative">
         <span
           className="absolute top-2 right-2 text-gray-600 cursor-pointer"

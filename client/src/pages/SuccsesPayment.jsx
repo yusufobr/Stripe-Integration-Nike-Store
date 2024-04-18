@@ -1,5 +1,3 @@
-import React from "react";
-
 const SuccsesPayment = () => {
   return (
     <div className="bg-gray-100 h-screen">

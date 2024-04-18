@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { hamburger } from "../assets/icons";
 import { headerLogo } from "../assets/images";
 import { navLinks } from "../constants";
 import { useSelector } from "react-redux";
 import { FaCartPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import SignInSignUpModal from "./SignInSignUp";
 
 const Nav = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -109,11 +110,11 @@ const Nav = () => {
           </button>
         </div>
       </div>
-      {/* <SignInSignUpModal
+      <SignInSignUpModal
         isOpen={isModalOpen}
         onClose={closeModal}
         onSignIn={handleSignIn}
-      /> */}
+      />
     </header>
   );
 };
