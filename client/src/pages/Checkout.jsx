@@ -7,6 +7,8 @@ import { products } from "../constants";
 import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 
+const baseUrl = "https://stripe-integration-nike-store-127e53dd1581.herokuapp.com"
+
 const Checkout = () => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart.cart);
@@ -16,6 +18,8 @@ const Checkout = () => {
     cartProductIds.has(product.id)
   );
 
+  // console.log(filteredProducts);
+
   const total = filteredProducts.reduce(
     (acc, product) => acc + product.price,
     0
@@ -24,13 +28,13 @@ const Checkout = () => {
   const STRIPEKEY = "pk_test_51P6EwaGAzs4QSrllbDpDGqdhyiank569n36raYfeEZb6dI8RYNPBsK2cJ9wnE6kKJrfczcKPXUmYvwZkxl2whhY000t1wqJ7x0"
 
   const submitPayment = async () => {
-    const strip = await loadStripe(STRIPEKEY);
+    const stripe = await loadStripe(STRIPEKEY);
 
     try {
-      const res = await axios.post("/api/create-checkout-session", {data: filteredProducts});
+      const res = await axios.post(`${baseUrl}/api/create-checkout-session`, {data: filteredProducts});
       const session = res.data;
-      console.log(session);
-      const result = await strip.redirectToCheckout({
+      // console.log(session);
+      const result = await stripe.redirectToCheckout({
         sessionId: session.id,
       });
       console.log("result: ", result);
