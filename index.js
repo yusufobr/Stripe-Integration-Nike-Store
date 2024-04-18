@@ -1,10 +1,14 @@
 import express from "express";
 import dotenv from "dotenv";
 import stripePackage from "stripe";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Use the provided PORT by Heroku or default to 3000
 const PORT = process.env.PORT || 3000;
@@ -26,7 +30,7 @@ app.post("/api/create-checkout-session", async (req, res) => {
       currency: "usd",
       product_data: {
         name: product.name,
-        images: [`http://localhost:5173/${product.image}`],
+        images: [product.image],
       },
       unit_amount: product.price * 100,
     },
